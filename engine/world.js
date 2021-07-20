@@ -33,8 +33,9 @@ class World {
 
         let h = perlin.perlin2D(x, y);
 
-        let tile = Water;    
+        let tile = DeepWater;    
 
+        if(h >= 0.25) tile = Water;
         if(h >= 0.3) tile = Sand;
         if(h >= 0.35)  tile = Grass;
         if(h >= 0.75) tile = Snow;

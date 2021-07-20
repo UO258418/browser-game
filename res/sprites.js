@@ -3,6 +3,7 @@ const filenames = [
     "snow.jpg",
     "water.jpg",
     "sand.jpg",
+    "deepwater.jpg",
     "player.png"
 ]
 
