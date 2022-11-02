@@ -3,8 +3,7 @@ class FPSCounter {
     constructor(font = "30px Arial") {
         this.last = new Date();
         this.current = null;
-        this.font = font;
-        this.setFont(this.font);
+        this.setFont(font);
         this.lastRefreshed = 0;
         this.refreshTime = 500;
         this.fps = 0;
@@ -22,7 +21,7 @@ class FPSCounter {
         return Math.round(this.fps);
     }
 
-    setFont(font) {
+    setFont(font = "30px Arial") {
         this.font = font;
         ctx.font = this.font;
     }

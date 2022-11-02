@@ -1,7 +1,13 @@
-var canvas = document.getElementById('gcanvas');
-var ctx = canvas.getContext('2d');
+const canvas = document.getElementById('gcanvas');
+const ctx = canvas.getContext('2d');
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
+
+window.onresize = () => {
+    ctx.canvas.width = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
+    fpscounter.setFont(fpscounter.font); // when resizing canvas some ctx settings reset
+}
 
 /* ----------------------------------------------------------- */
 let fpscounter = new FPSCounter();

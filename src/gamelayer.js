@@ -14,7 +14,7 @@ class GameLayer extends Layer {
 
         // Enemy to try
         this.enemy = new EnemyTrial(this.player.position.x - 100, this.player.position.y - 100,
-            Tile.size / 12, this.player);
+            this.player.speed / 2.5, this.player);
 
         /* input */
         this.input = new Input();
