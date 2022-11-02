@@ -19,19 +19,6 @@ class Character extends Model {
 
         // update the animation
         this.animation.update();
-
-        // check boundaries
-        if(this.position.x - Tile.size / 2 < 0) 
-            this.position.x = Tile.size / 2;
-
-        if(this.position.x + Tile.size / 2 > world.area) 
-            this.position.x = world.area - Tile.size / 2;
-
-        if(this.position.y - Tile.size / 2 < 0) 
-            this.position.y = Tile.size / 2;
-
-        if(this.position.y + Tile.size / 2 > world.area) 
-            this.position.y = world.area - Tile.size / 2;
     }
 
     draw(camera) {
