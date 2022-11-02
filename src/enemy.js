@@ -27,7 +27,7 @@ class Enemy extends Model {
 
     getVectorToTarget() {
         return new Vector(this.target.position.x - this.position.x,
-            this.target.position.y - this.position.y).normalized();
+            this.target.position.y - this.position.y).normalize();
     }
 
     update(world) {

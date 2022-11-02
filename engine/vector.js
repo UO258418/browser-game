@@ -16,7 +16,7 @@ class Vector {
         return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
     }
 
-    normalized() {
+    normalize() {
         let module = this.module();
         return new Vector(this.x / module, this.y / module, this.z / module);
     }
