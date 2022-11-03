@@ -1,8 +1,9 @@
 class Bar extends Model {
 
-    constructor(cluster, name, value, maxValue, x, y, width, height, primaryColor, secondaryColor) {
+    constructor(cluster, index, name, value, maxValue, x, y, width, height, primaryColor, secondaryColor) {
         super(x, y, width, height);
         this.cluster = cluster;
+        this.index = index;
         this.name = name;
         this.value = value;
         this.maxValue = maxValue;

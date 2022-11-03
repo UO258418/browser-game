@@ -6,10 +6,14 @@ class Player extends Character {
         this.setCollisionAlpha(30);
         this.maxHp = hp;
         this.hp = this.maxHp;
+        this.maxMana = 20;
+        this.mana = this.maxMana;
 
         // bars
         this.barCluster.addBar("HP", "hp", "maxHp", 80, 12,
             "red", "black");
+        this.barCluster.addBar("Mana", "mana", "maxMana", 100, 20,
+            "blue", "black");
     }
 
 }
