@@ -1,7 +1,7 @@
 class Character extends Model {
 
     constructor(x, y, speed = Tile.size / 10) {
-        super(x, y);
+        super(x, y, Tile.size, Tile.size);
         this.animation = null;
         this.speed = speed;
         this.speedVector = new Vector(0, 0);

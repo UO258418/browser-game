@@ -12,9 +12,12 @@ class GameLayer extends Layer {
         this.player = new Player(this.world.area / 2, this.world.area / 2);
         this.camera = new Camera(this.player);
 
+        // Enemies array
+        let enemies = [];
+
         // Enemy to try
         this.enemy = new EnemyTrial(this.player.position.x - 100, this.player.position.y - 100,
-            this.player.speed / 2.5, this.player);
+            this.player.speed / 8, this.player);
 
         /* input */
         this.input = new Input();
@@ -40,12 +43,21 @@ class GameLayer extends Layer {
         this.player.update(this.world);
         this.camera.update(this.world);
         this.enemy.update(this.world);
+
+        // check if player is colliding with enemies
+        if(this.player.collides(this.enemy)) {
+            this.collisionPlayerWithEnemy();
+        }
     }
 
     draw() {
         this.world.draw(this.camera);
         this.player.draw(this.camera);
         this.enemy.render(this.camera);
+    }
+
+    collisionPlayerWithEnemy() {
+        console.log("Collision");
     }
 
 }

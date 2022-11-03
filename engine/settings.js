@@ -2,5 +2,6 @@ const settings = {
     worldSize: 600,
     tileSize: 64,
     FPS: 60,
-    perlinSpread: 6, 
+    perlinSpread: 6,
+    collisionAlpha: 5
 }
