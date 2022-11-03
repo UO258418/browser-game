@@ -12,12 +12,18 @@ class GameLayer extends Layer {
         this.player = new Player(this.world.area / 2, this.world.area / 2);
         this.camera = new Camera(this.player);
 
+        // Ammo existing
+        this.ammo = [];
+
+        this.collider = new Collider();
+
         // Enemies array
-        let enemies = [];
+        this.enemies = [];
 
         // Enemy to try
         this.enemy = new EnemyTrial(this.player.position.x - 100, this.player.position.y - 100,
             this.player.speed / 8, this.player);
+        this.enemies.push(this.enemy);
 
         /* input */
         this.input = new Input();
@@ -43,21 +49,31 @@ class GameLayer extends Layer {
         this.player.update(this.world);
         this.camera.update(this.world);
         this.enemy.update(this.world);
+        this.ammo.forEach(ammo => ammo.update(this.world));
 
         // check if player is colliding with enemies
-        if(this.player.collides(this.enemy)) {
-            this.collisionPlayerWithEnemy();
-        }
+        this.enemies.forEach(enemy => {
+            if(this.player.collides(enemy)) {
+                this.collider.playerWithEnemy(this.player, enemy);
+            }
+        });
+
+        // check for ammo collisions with enemies
+        this.ammo.forEach(ammo => {
+           this.enemies.forEach(enemy => {
+              if(ammo.collides(enemy))
+                  this.collider.ammoWithEnemy(ammo, enemy);
+           });
+        });
     }
 
     draw() {
-        this.world.draw(this.camera);
-        this.player.draw(this.camera);
-        this.enemy.render(this.camera);
-    }
+        this.world.draw(this.camera); // draw world
 
-    collisionPlayerWithEnemy() {
-        this.player.hp -= 1;
+        this.enemies.forEach(enemy => enemy.render(this.camera));
+
+        this.ammo.forEach(ammo => ammo.render(this.camera)); // draw ammo
+        this.player.draw(this.camera); // draw player
     }
 
 }

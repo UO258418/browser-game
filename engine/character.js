@@ -8,6 +8,7 @@ class Character extends Model {
         this.state = state.IDLE;
         this.orientation = orientation.UP;
         this.barCluster = new BarCluster(this);
+        this.weapons = [];
     }
 
     update(world) {
@@ -21,6 +22,9 @@ class Character extends Model {
 
         // update the barCluster
         this.barCluster.update();
+
+        // update weapons
+        this.weapons.forEach(weapon => weapon.update(this));
     }
 
     draw(camera) {

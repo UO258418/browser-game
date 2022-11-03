@@ -1,12 +1,21 @@
 class Enemy extends Model {
 
-    constructor(x, y, speed, target) {
+    constructor(x, y, speed, target, hp, damage) {
         super(x, y);
         this.speed = speed;
         this.speedVector = new Vector(0, 0);
         this.target = target;
         this.animation = null;
         this.orientation = null;
+
+        this.maxHp = hp;
+        this.hp = this.maxHp;
+        this.damage = damage;
+
+        // bars
+        this.barCluster = new BarCluster(this);
+        this.barCluster.addBar("HP", "hp", "maxHp", 80, 12,
+            "purple", "black");
     }
 
     setOrientation() {
@@ -41,10 +50,21 @@ class Enemy extends Model {
 
         // update the animation
         this.animation.update();
+
+        // update bar cluster
+        this.barCluster.update();
     }
 
     draw(camera) {
         this.animation.draw(camera);
+        this.barCluster.draw(camera);
+    }
+
+    takeDamage(damage) {
+        if(this.hp - damage < 0)
+            this.hp = 0;
+        else
+            this.hp -= damage;
     }
 
 }

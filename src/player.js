@@ -12,8 +12,15 @@ class Player extends Character {
         // bars
         this.barCluster.addBar("HP", "hp", "maxHp", 80, 12,
             "red", "black");
-        this.barCluster.addBar("Mana", "mana", "maxMana", 100, 20,
-            "blue", "black");
+
+        this.weapons.push(new DickGun());
+    }
+
+    takeDamage(damage) {
+        if(this.hp - damage < 0)
+            this.hp = 0;
+        else
+            this.hp -= damage;
     }
 
 }

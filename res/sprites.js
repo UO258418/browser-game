@@ -4,7 +4,8 @@ const filenames = [
     "water.jpg",
     "sand.jpg",
     "deepwater.jpg",
-    "player.png"
+    "player.png",
+    "dick.png"
 ]
 
 var sprites = {}
