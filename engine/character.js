@@ -7,6 +7,7 @@ class Character extends Model {
         this.speedVector = new Vector(0, 0);
         this.state = state.IDLE;
         this.orientation = orientation.UP;
+        this.barCluster = new BarCluster(this);
     }
 
     update(world) {
@@ -17,10 +18,14 @@ class Character extends Model {
 
         // update the animation
         this.animation.update();
+
+        // update the barCluster
+        this.barCluster.update();
     }
 
     draw(camera) {
         this.animation.draw(camera);
+        this.barCluster.draw(camera);
     }
 
     moveUp() {

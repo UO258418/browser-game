@@ -27,6 +27,7 @@ class FPSCounter {
     }
 
     draw() {
+        ctx.fillStyle = "black";
         ctx.fillText("FPS: " + this.calculateFPS(), 
             ctx.canvas.width *  0.05, ctx.canvas.height * 0.1);
     }

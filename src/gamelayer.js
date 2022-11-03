@@ -57,7 +57,7 @@ class GameLayer extends Layer {
     }
 
     collisionPlayerWithEnemy() {
-        console.log("Collision");
+        this.player.hp -= 1;
     }
 
 }
