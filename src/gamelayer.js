@@ -51,6 +51,12 @@ class GameLayer extends Layer {
         this.enemy.update(this.world);
         this.ammo.forEach(ammo => ammo.update(this.world));
 
+        // remove ammo outside the screen
+        this.ammo.forEach(ammo => {
+            if (!ammo.isOnScreen(this.camera))
+                this.ammo.splice(this.ammo.indexOf(ammo), 1);
+        });
+
         // check if player is colliding with enemies
         this.enemies.forEach(enemy => {
             if(this.player.collides(enemy)) {
