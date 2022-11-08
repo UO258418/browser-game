@@ -4,7 +4,7 @@ class Dick extends Ammo {
         super(x, y, 20, 10, 10, 15);
     }
 
-    update(world) {
+    update() {
         // move
         if(this.speedVector.x != 0 || this.speedVector.y != 0)
             this.speedVector = this.speedVector.normalize().dotProduct(this.speed);
