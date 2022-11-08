@@ -87,4 +87,9 @@ class GameLayer extends Layer {
         this.player.draw(this.camera); // draw player
     }
 
+    removeFromCollection(collection, item) {
+        let index = this[collection].indexOf(item);
+        this[collection].splice(index, 1);
+    }
+
 }
