@@ -5,7 +5,7 @@ class Weapon {
         this.cooldown = cooldown;
         this.ammo = ammo;
         this.current = null;
-        this.lastUsage = new Date();
+        this.lastUsage = -this.cooldown;
     }
 
     update(owner) {

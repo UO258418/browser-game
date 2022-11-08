@@ -10,12 +10,19 @@ class Collider {
         player.takeDamage(enemy.damage);
     }
 
-    ammoWithEnemy(ammo, enemy){
+    ammoWithEnemy(ammo, enemy) {
         enemy.takeDamage(ammo.damage);
         if(enemy.hp == 0) {
-            let index = gameLayer.enemies.indexOf(enemy);
-            gameLayer.enemies.splice(index, 1);
+            gameLayer.removeFromCollection("enemies", enemy);
+
+            // Create drop
+            gameLayer.drops.push(new Blood(enemy.position.x, enemy.position.y, gameLayer.player));
         }
+    }
+
+    playerWithDrop(player, drop) {
+        player.collect(drop);
+        gameLayer.removeFromCollection("drops", drop);
     }
 
 }

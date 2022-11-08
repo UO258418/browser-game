@@ -53,4 +53,14 @@ class Model {
             this.width - 2 * this.collisionAlpha, this.height - 2 * this.collisionAlpha);
     }
 
+    getVectorToTarget(target) {
+        return new Vector(target.position.x - this.position.x,
+            target.position.y - this.position.y).normalize();
+    }
+
+    distanceToTarget(target) {
+        return new Vector(target.position.x - this.position.x,
+            target.position.y - this.position.y).module();
+    }
+
 }

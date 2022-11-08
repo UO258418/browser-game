@@ -6,14 +6,13 @@ class Player extends Character {
         this.setCollisionAlpha(5);
         this.maxHp = hp;
         this.hp = this.maxHp;
-        this.maxMana = 20;
-        this.mana = this.maxMana;
+        this.exp = 0;
 
         // bars
         this.barCluster.addBar("HP", "hp", "maxHp", 80, 12,
             "red", "black");
 
-        this.weapons.push(new DickGun(), new Otaku());
+        this.weapons.push(new Otaku(), new DickGun());
     }
 
     takeDamage(damage) {
@@ -21,6 +20,10 @@ class Player extends Character {
             this.hp = 0;
         else
             this.hp -= damage;
+    }
+
+    collect(drop) {
+        this[drop.attribute] += drop.value;
     }
 
 }

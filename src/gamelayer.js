@@ -20,6 +20,9 @@ class GameLayer extends Layer {
         // Enemies array
         this.enemies = [];
 
+        // Drops
+        this.drops = [];
+
         // Enemy spawner
         this.enemySpawner = new EnemySpawner(this.player, 100, 500);
         this.enemySpawner.registerEnemyType(EnemyTrial);
@@ -75,10 +78,22 @@ class GameLayer extends Layer {
                 this.collider.playerWithEnemy(this.player, enemy);
             }
         });
+
+        // drops
+        this.drops.forEach(drop => {
+            drop.update(); // update
+
+            // Check collisions with player
+            if(this.player.collides(drop)) {
+                this.collider.playerWithDrop(this.player, drop);
+            }
+        });
     }
 
     draw() {
         this.world.draw(this.camera); // draw world
+
+        this.drops.forEach(drop => drop.render(this.camera));
 
         this.enemies.forEach(enemy => enemy.render(this.camera));
 

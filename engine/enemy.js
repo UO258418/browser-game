@@ -34,18 +34,13 @@ class Enemy extends Model {
             this.orientation = orientation.LEFT;
     }
 
-    getVectorToTarget() {
-        return new Vector(this.target.position.x - this.position.x,
-            this.target.position.y - this.position.y).normalize();
-    }
-
     update() {
         // set the orientation
         this.setOrientation();
         this.animation.setAnimation(this.orientation);
 
         // move
-        this.speedVector = this.getVectorToTarget().dotProduct(this.speed);
+        this.speedVector = this.getVectorToTarget(this.target).dotProduct(this.speed);
         this.position = this.position.add(this.speedVector);
 
         // update the animation
