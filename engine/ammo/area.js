@@ -35,8 +35,6 @@ class Area extends Ammo {
             this.width, this.height, 0, 0, 2 * Math.PI);
         ctx.closePath();
         ctx.fill();
-
-        this.drawCollisionBox(camera);
     }
 
     setColor(r, g ,b) {
@@ -44,21 +42,22 @@ class Area extends Ammo {
     }
 
     collides(model) {
-        if(this.position.x - this.width + this.collisionAlpha < model.position.x + model.width / 2
-            && this.position.x + this.width - this.collisionAlpha > model.position.x - model.width / 2
-            && this.position.y - this.height + this.collisionAlpha < model.position.y + model.height / 2
-            && this.position.y + this.height - this.collisionAlpha > model.position.y - model.height / 2) {
+        let distanceToModel = this.distanceToTarget(model);
+        let margin = (model.width + model.height) / 4 * 0.6;
+        if(distanceToModel <= (this.width + this.height) / 2 + margin)
             return true;
-        }
 
         return false;
     }
 
-    drawCollisionBox(camera) {
+    drawCollisionBox(camera, model) {
+        let margin = (model.width + model.height) / 4 * 0.6;
         ctx.strokeStyle = "red";
-        ctx.strokeRect(this.position.x - this.width - camera.offset.x + this.collisionAlpha,
-            this.position.y - this.height - camera.offset.y + this.collisionAlpha,
-            this.width * 2 - this.collisionAlpha * 2, this.height * 2 - this.collisionAlpha * 2);
+        ctx.beginPath();
+        ctx.ellipse(this.position.x - camera.offset.x, this.position.y - camera.offset.y,
+            this.width + margin, this.height + margin, 0, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.stroke();
     }
 
 }
