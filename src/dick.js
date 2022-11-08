@@ -1,7 +1,7 @@
 class Dick extends Ammo {
 
     constructor(x, y) {
-        super(x, y, 20, 10, 10, 20);
+        super(x, y, 20, 10, 10, 15);
     }
 
     update(world) {

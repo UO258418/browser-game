@@ -14,7 +14,7 @@ class Collider {
         enemy.takeDamage(ammo.damage);
         if(enemy.hp == 0) {
             let index = gameLayer.enemies.indexOf(enemy);
-            gameLayer.enemies.splice(enemy);
+            gameLayer.enemies.splice(index, 1);
         }
     }
 

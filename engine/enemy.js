@@ -39,7 +39,7 @@ class Enemy extends Model {
             this.target.position.y - this.position.y).normalize();
     }
 
-    update(world) {
+    update() {
         // set the orientation
         this.setOrientation();
         this.animation.setAnimation(this.orientation);

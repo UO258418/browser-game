@@ -3,5 +3,4 @@ const settings = {
     tileSize: 64,
     FPS: 60,
     perlinSpread: 6,
-    collisionAlpha: 5
 }

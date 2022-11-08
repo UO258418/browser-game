@@ -20,10 +20,9 @@ class GameLayer extends Layer {
         // Enemies array
         this.enemies = [];
 
-        // Enemy to try
-        this.enemy = new EnemyTrial(this.player.position.x - 100, this.player.position.y - 100,
-            this.player.speed / 8, this.player);
-        this.enemies.push(this.enemy);
+        // Enemy spawner
+        this.enemySpawner = new EnemySpawner(this.player, 100, 1000);
+        this.enemySpawner.registerEnemyType(EnemyTrial);
 
         /* input */
         this.input = new Input();
@@ -48,8 +47,10 @@ class GameLayer extends Layer {
     update() {
         this.player.update(this.world);
         this.camera.update(this.world);
-        this.enemy.update(this.world);
+        this.enemySpawner.update();
+
         this.ammo.forEach(ammo => ammo.update(this.world));
+        this.enemies.forEach(enemy => enemy.update());
 
         // remove ammo outside the screen
         this.ammo.forEach(ammo => {
@@ -76,10 +77,18 @@ class GameLayer extends Layer {
     draw() {
         this.world.draw(this.camera); // draw world
 
-        this.enemies.forEach(enemy => enemy.render(this.camera));
+        this.enemies.forEach(enemy => {
+            enemy.render(this.camera);
+            enemy.drawCollisionBox(this.camera);
+        });
 
-        this.ammo.forEach(ammo => ammo.render(this.camera)); // draw ammo
+        this.ammo.forEach(ammo => {
+            ammo.render(this.camera);
+            ammo.drawCollisionBox(this.camera);
+        });
+
         this.player.draw(this.camera); // draw player
+        this.player.drawCollisionBox(this.camera);
     }
 
 }
