@@ -7,28 +7,28 @@ class Model {
         this.collisionAlpha = 0;
     }
 
-    isOnScreen(camera) {
+    isOnScreen(camera, context) {
         if((this.position.x + Tile.size / 2 - camera.offset.x) >= 0
-        && (this.position.x - Tile.size / 2 - camera.offset.x) <= canvas.width
+        && (this.position.x - Tile.size / 2 - camera.offset.x) <= context.canvas.width
         && (this.position.y + Tile.size / 2 - camera.offset.y) >= 0
-        && (this.position.y - Tile.size / 2 - camera.offset.y) <= canvas.height) {
+        && (this.position.y - Tile.size / 2 - camera.offset.y) <= context.canvas.height) {
             return true;
         } else {
             return false;
         }
     }
 
-    update(world) {
+    update() {
 
     }
 
-    draw(camera) {
+    draw(camera, context) {
 
     }
 
-    render(camera) {
-        if(this.isOnScreen(camera))
-            this.draw(camera);
+    render(camera, context) {
+        if(this.isOnScreen(camera, context))
+            this.draw(camera, context);
     }
 
     collides(model) {

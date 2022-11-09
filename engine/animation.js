@@ -31,8 +31,8 @@ class Animation {
         this.framePositionX = this.currentFrame * this.frameWidth;
     }
 
-    draw(camera) {
-        ctx.drawImage(this.spriteSheet, this.framePositionX, this.framePositionY,
+    draw(camera, context) {
+        context.drawImage(this.spriteSheet, this.framePositionX, this.framePositionY,
             this.frameWidth, this.frameHeight, this.model.position.x - this.model.width / 2 - camera.offset.x,
             this.model.position.y - this.model.height / 2 - camera.offset.y, this.model.width, this.model.height);
     }

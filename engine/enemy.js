@@ -50,9 +50,9 @@ class Enemy extends Model {
         this.barCluster.update();
     }
 
-    draw(camera) {
-        this.animation.draw(camera);
-        this.barCluster.draw(camera);
+    draw(camera, context) {
+        this.animation.draw(camera, context);
+        this.barCluster.draw(camera, context);
     }
 
     takeDamage(damage) {

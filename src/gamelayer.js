@@ -42,6 +42,14 @@ class GameLayer extends Layer {
         this.input.DU = () => this.player.stop();
         this.input.SU = () => this.player.stop();
         this.input.AU = () => this.player.stop();
+
+        // Get the contexts
+        this.contextWorld = ContextManager.getCanvasContext('wcanvas');
+        this.contextGame = ContextManager.getCanvasContext('gcanvas');
+        this.contextUI = ContextManager.getCanvasContext('uicanvas');
+
+        // Initial things to be drawn
+        this.world.draw(this.camera, this.contextWorld);
     }
 
     processInput() {
@@ -49,7 +57,7 @@ class GameLayer extends Layer {
     }
 
     update() {
-        this.player.update(this.world);
+        this.player.update();
         this.camera.update(this.world);
         this.enemySpawner.update();
 
@@ -59,7 +67,7 @@ class GameLayer extends Layer {
             ammo.update();
 
             // remove if it is offscreen
-            if (!ammo.isOnScreen(this.camera))
+            if (!ammo.isOnScreen(this.camera, this.contextGame))
                 this.ammo.splice(this.ammo.indexOf(ammo), 1);
 
             // Check collisions with enemies
@@ -92,15 +100,13 @@ class GameLayer extends Layer {
     }
 
     draw() {
-        this.world.draw(this.camera); // draw world
+        // game context
+        this.contextGame.clearRect(0, 0, this.contextGame.canvas.width, this.contextGame.canvas.height); // clear
 
-        this.drops.forEach(drop => drop.render(this.camera));
-
-        this.enemies.forEach(enemy => enemy.render(this.camera));
-
-        this.ammo.forEach(ammo => ammo.render(this.camera));
-
-        this.player.draw(this.camera); // draw player
+        this.drops.forEach(drop => drop.render(this.camera, this.contextGame));
+        this.enemies.forEach(enemy => enemy.render(this.camera, this.contextGame));
+        this.ammo.forEach(ammo => ammo.render(this.camera, this.contextGame));
+        this.player.draw(this.camera, this.contextGame); // draw player
     }
 
     removeFromCollection(collection, item) {

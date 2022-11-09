@@ -7,8 +7,8 @@ class Tile extends Model {
         this.sprite = sprite;
     }
 
-    draw(camera) {
-        ctx.drawImage(this.sprite, this.position.x - Tile.size / 2 - camera.offset.x,
+    draw(camera, context) {
+        context.drawImage(this.sprite, this.position.x - Tile.size / 2 - camera.offset.x,
              this.position.y - Tile.size / 2 - camera.offset.y,
               Tile.size, Tile.size);
     }

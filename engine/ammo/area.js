@@ -28,18 +28,18 @@ class Area extends Ammo {
 
     }
 
-    draw(camera) {
-        this._draw(camera);
+    draw(camera, context) {
+        this._draw(camera, context);
 
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.ellipse(this.position.x - camera.offset.x, this.position.y - camera.offset.y,
+        context.fillStyle = this.color;
+        context.beginPath();
+        context.ellipse(this.position.x - camera.offset.x, this.position.y - camera.offset.y,
             this.width, this.height, 0, 0, 2 * Math.PI);
-        ctx.closePath();
-        ctx.fill();
+        context.closePath();
+        context.fill();
     }
 
-    _draw(camera) {
+    _draw(camera, context) {
 
     }
 

@@ -11,14 +11,14 @@ class Bar extends Model {
         this.secondaryColor = secondaryColor;
     }
 
-    draw(camera) {
-        ctx.fillStyle = this.secondaryColor;
-        ctx.fillRect(this.position.x - this.width / 2 - camera.offset.x,
+    draw(camera, context) {
+        context.fillStyle = this.secondaryColor;
+        context.fillRect(this.position.x - this.width / 2 - camera.offset.x,
                  this.position.y - this.height / 2 - camera.offset.y,
                     this.width, this.height);
 
-        ctx.fillStyle = this.primaryColor;
-        ctx.fillRect(this.position.x - this.width / 2 - camera.offset.x,
+        context.fillStyle = this.primaryColor;
+        context.fillRect(this.position.x - this.width / 2 - camera.offset.x,
                  this.position.y - this.height / 2 - camera.offset.y,
                     map(this.cluster.model[this.value], 0, this.cluster.model[this.maxValue],
                         0, this.width), this.height);

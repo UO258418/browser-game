@@ -22,8 +22,8 @@ class BarCluster {
         });
     }
 
-    draw(camera) {
-        this.bars.forEach(bar => bar.render(camera));
+    draw(camera, context) {
+        this.bars.forEach(bar => bar.render(camera, context));
     }
 
 }

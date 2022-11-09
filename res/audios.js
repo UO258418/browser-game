@@ -10,7 +10,6 @@ function loadAudios(audioFilenames) {
         let audio = new Audio();
         audio.src = "res/audio/" + filename;
         let audioName = filename.split('.')[0];
-        console.log(audioName);
         audios[audioName] = audio;
     });
 }

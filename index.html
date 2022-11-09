@@ -6,8 +6,12 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-    <!-- CANVAS -->
-    <canvas id="gcanvas"></canvas>
+    <!-- CANVASES -->
+    <div id="canvas-wrapper">
+        <canvas id="wcanvas" z-index="0"></canvas>
+        <canvas id="gcanvas" z-index="1"></canvas>
+        <canvas id="uicanvas" z-index="2"></canvas>
+    </div>
 
     <!-- SCRIPT -->
     <!-- engine -->
@@ -18,6 +22,9 @@
     <script src="engine/util.js"></script>
     <script src="engine/perlin2d.js"></script>
     <script src="engine/input.js"></script>
+
+    <script src="engine/contextmanager.js"></script>
+
     <script src="engine/model.js"></script>
     <script src="engine/tile.js"></script>
     <script src="engine/animation.js"></script>

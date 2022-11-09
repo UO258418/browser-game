@@ -5,3 +5,7 @@ html, body {
     cursor: none;
     overflow: hidden;
 }
+
+canvas {
+    position:absolute; top:0px; left:0px;
+}

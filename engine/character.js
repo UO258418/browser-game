@@ -11,7 +11,7 @@ class Character extends Model {
         this.weapons = [];
     }
 
-    update(world) {
+    update() {
         // move
         if(this.speedVector.x != 0 || this.speedVector.y != 0)
             this.speedVector = this.speedVector.normalize().dotProduct(this.speed);
@@ -27,9 +27,9 @@ class Character extends Model {
         this.weapons.forEach(weapon => weapon.update(this));
     }
 
-    draw(camera) {
-        this.animation.draw(camera);
-        this.barCluster.draw(camera);
+    draw(camera, context) {
+        this.animation.draw(camera, context);
+        this.barCluster.draw(camera, context);
     }
 
     moveUp() {

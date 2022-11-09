@@ -3,6 +3,11 @@ const ctx = canvas.getContext('2d');
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 
+// Register contexts
+ContextManager.registerContext('wcanvas');
+ContextManager.registerContext('gcanvas');
+ContextManager.registerContext('uicanvas');
+
 window.onresize = () => {
     ctx.canvas.width = window.innerWidth;
     ctx.canvas.height = window.innerHeight;
@@ -44,7 +49,6 @@ function update() {
 
 /* draw */
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     gameLayer.draw();
     fpscounter.draw();
 }

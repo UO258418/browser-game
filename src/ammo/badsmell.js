@@ -4,8 +4,8 @@ class BadSmell extends Area {
         super(center, 100, 100, 4, 6000);
     }
 
-   _draw(camera) {
-       let gradient = ctx.createRadialGradient(this.position.x - camera.offset.x,
+   _draw(camera, context) {
+       let gradient = context.createRadialGradient(this.position.x - camera.offset.x,
            this.position.y - camera.offset.y, 0, this.position.x - camera.offset.x,
            this.position.y - camera.offset.y, (this.width + this.height) / 2);
 

@@ -19,9 +19,9 @@ class World {
         }
     }
 
-    draw(camera) {
+    draw(camera, context) {
         for(let row = 0; row < this.tiles.length; row++) {
-            this.tiles[row].forEach(tile => tile.render(camera));
+            this.tiles[row].forEach(tile => tile.render(camera, context));
         }
     }
 
