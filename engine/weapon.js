@@ -18,7 +18,6 @@ class Weapon {
     }
 
     _attack(owner) {
-        console.log(this.constructor.name + " firing");
         this.attack(owner);
     }
 

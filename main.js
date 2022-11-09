@@ -9,13 +9,20 @@ window.onresize = () => {
     fpscounter.setFont(fpscounter.font); // when resizing canvas some ctx settings reset
 }
 
+window.onkeydown = () => {
+    audios.battleship.loop = true;
+    audios.battleship.volume = audioSettings.backgroundMusicVolume;
+    audios.battleship.play();
+    window.onkeydown = null;
+}
+
 /* ----------------------------------------------------------- */
 let fpscounter = new FPSCounter();
 
 // layers
 let gameLayer;
 
-loadImages(startup, filenames);
+loadAudios(loadImages(startup, filenames), audioFilenames);
 
 function startup() {
     gameLayer = new GameLayer();

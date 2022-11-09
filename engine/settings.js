@@ -4,3 +4,7 @@ const settings = {
     FPS: 60,
     perlinSpread: 6,
 }
+
+const audioSettings = {
+    backgroundMusicVolume: 0.03
+}
