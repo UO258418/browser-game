@@ -10,7 +10,8 @@ class BadSmell extends Area {
            this.position.y - camera.offset.y, (this.width + this.height) / 2);
 
        gradient.addColorStop(0,'rgba(0, 102, 0, 0.6)');
-       gradient.addColorStop(1, 'rgba(51, 204, 51, 0.6)');
+       gradient.addColorStop(0.9, 'rgba(51, 204, 51, 0.6)');
+       gradient.addColorStop(1, 'rgba(153, 0, 204, 0.6)');
 
        this.color = gradient;
    }
