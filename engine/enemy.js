@@ -1,7 +1,7 @@
 class Enemy extends Model {
 
-    constructor(x, y, speed, target, hp, damage) {
-        super(x, y);
+    constructor(x, y, width, height, speed, target, hp, damage) {
+        super(x, y, width, height);
         this.speed = speed;
         this.speedVector = new Vector(0, 0);
         this.target = target;

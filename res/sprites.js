@@ -6,7 +6,9 @@ const filenames = [
     "deepwater.jpg",
     "player.png",
     "scrotum.png",
-    "blood.png"
+    "blood.png",
+    "skeleton.png",
+    "goblin.png"
 ]
 
 var sprites = {}

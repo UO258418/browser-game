@@ -22,7 +22,7 @@ let fpscounter = new FPSCounter();
 // layers
 let gameLayer;
 
-loadAudios(loadImages(startup, filenames), audioFilenames);
+loadImages(startup, filenames);
 
 function startup() {
     gameLayer = new GameLayer();

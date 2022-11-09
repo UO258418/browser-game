@@ -25,7 +25,8 @@ class GameLayer extends Layer {
 
         // Enemy spawner
         this.enemySpawner = new EnemySpawner(this.player, 100, 500);
-        this.enemySpawner.registerEnemyType(EnemyTrial);
+        this.enemySpawner.registerEnemyType(Skeleton);
+        this.enemySpawner.registerEnemyType(Goblin)
 
         /* input */
         this.input = new Input();

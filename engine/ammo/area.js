@@ -49,7 +49,7 @@ class Area extends Ammo {
 
     collides(model) {
         let distanceToModel = this.distanceToTarget(model);
-        let margin = (model.width + model.height) / 4 * 0.6;
+        let margin = (model.width - model.collisionAlpha + model.height - model.collisionAlpha) / 4 * 0.6;
         if(distanceToModel <= (this.width + this.height) / 2 + margin)
             return true;
 

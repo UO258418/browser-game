@@ -1,5 +1,7 @@
 class Scrotum extends Ammo {
 
+    static sound = audios.scrotum;
+
     constructor(x, y) {
         super(x, y, 30, 30, 10, 15);
     }

@@ -19,6 +19,9 @@ class Weapon {
 
     _attack(owner) {
         this.attack(owner);
+
+        if(this.ammo.sound != null)
+            this.ammo.sound.play();
     }
 
     attack(owner) {

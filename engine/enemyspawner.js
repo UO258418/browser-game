@@ -66,7 +66,7 @@ class EnemySpawner {
         spawnFunctions[Math.floor(Math.random() * spawnFunctions.length)]();
 
         let randomEnemy = this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)];
-        gameLayer.enemies.push(new randomEnemy(randomX, randomY, this.target.speed / 8, this.target));
+        gameLayer.enemies.push(new randomEnemy(randomX, randomY, this.target));
     }
 
 }
