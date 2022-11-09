@@ -1,7 +1,7 @@
 class Blood extends Drop {
 
     constructor(x, y, target) {
-        super(x, y, 10, 12, 6, target, 400, "exp", 20);
+        super(x, y, 20, 20, 6, target, 400, "exp", 20);
     }
 
     draw(camera) {

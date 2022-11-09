@@ -1,7 +1,7 @@
-class DickGun extends Weapon {
+class ScrotumLauncher extends Weapon {
 
     constructor() {
-        super(5, 1000, Dick);
+        super(5, 1000, Scrotum);
     }
 
     attack(owner) {

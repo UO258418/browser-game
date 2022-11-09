@@ -1,24 +1,27 @@
 class FPSCounter {
 
     constructor(font = "30px Arial") {
-        this.last = new Date();
-        this.current = null;
         this.setFont(font);
+        this.lastFrame = new Date();
         this.lastRefreshed = 0;
+        this.current = null;
         this.refreshTime = 500;
         this.fps = 0;
+        this.frameTimes = [];
     }
 
-    calculateFPS() {
+    update() {
         this.current = new Date();
-        let ellapsed = this.current - this.last;
+        let ellapsed = this.current - this.lastFrame;
         this.lastRefreshed += ellapsed;
+        this.frameTimes.push(ellapsed);
         if(this.lastRefreshed >= this.refreshTime) {
-            this.fps = 1000 / ellapsed;
+            let avgFrameTime = this.frameTimes.reduce((partialSum, ft) => partialSum + ft, 0) / this.frameTimes.length;
+            this.fps = 1000 / avgFrameTime;
             this.lastRefreshed = 0;
+            this.frameTimes = [];
         }
-        this.last = this.current;
-        return Math.round(this.fps);
+        this.lastFrame = this.current;
     }
 
     setFont(font = "30px Arial") {
@@ -28,8 +31,7 @@ class FPSCounter {
 
     draw() {
         ctx.fillStyle = "black";
-        ctx.fillText("FPS: " + this.calculateFPS(), 
-            ctx.canvas.width *  0.05, ctx.canvas.height * 0.1);
+        ctx.fillText("FPS: " + Math.round(this.fps), ctx.canvas.width *  0.05, ctx.canvas.height * 0.1);
     }
 
 }

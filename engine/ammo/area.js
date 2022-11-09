@@ -3,7 +3,7 @@ class Area extends Ammo {
     constructor(center, width, height, damage, duration, speed = 0) {
         super(center.position.x, center.position.y, width, height, damage, speed);
         this.center = center;
-        this.color = new Vector(0, 255, 255);
+        this.color = `rgba(0, 0, 0, 0.6)`;
         this.duration = duration;
         this.current = null;
         this.created = new Date();
@@ -29,7 +29,9 @@ class Area extends Ammo {
     }
 
     draw(camera) {
-        ctx.fillStyle = `rgba(${this.color.x}, ${this.color.y}, ${this.color.z}, 0.6)`;
+        this._draw(camera);
+
+        ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.ellipse(this.position.x - camera.offset.x, this.position.y - camera.offset.y,
             this.width, this.height, 0, 0, 2 * Math.PI);
@@ -37,8 +39,12 @@ class Area extends Ammo {
         ctx.fill();
     }
 
-    setColor(r, g ,b) {
-        this.color = new Vector(r, g, b);
+    _draw(camera) {
+
+    }
+
+    setColor(color) {
+        this.color = color;
     }
 
     collides(model) {

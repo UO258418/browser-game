@@ -1,7 +1,7 @@
-class Dick extends Ammo {
+class Scrotum extends Ammo {
 
     constructor(x, y) {
-        super(x, y, 20, 10, 10, 15);
+        super(x, y, 30, 30, 10, 15);
     }
 
     update() {
@@ -12,7 +12,7 @@ class Dick extends Ammo {
     }
 
     draw(camera) {
-        ctx.drawImage(sprites.dick, this.position.x - this.width / 2 - camera.offset.x,
+        ctx.drawImage(sprites.scrotum, this.position.x - this.width / 2 - camera.offset.x,
             this.position.y - this.height / 2 - camera.offset.y, this.width, this.height);
     }
 

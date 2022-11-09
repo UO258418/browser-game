@@ -5,7 +5,7 @@ const filenames = [
     "sand.jpg",
     "deepwater.jpg",
     "player.png",
-    "dick.png",
+    "scrotum.png",
     "blood.png"
 ]
 

@@ -31,6 +31,7 @@ function processInput() {
 /* update */
 function update() {
     gameLayer.update();
+    fpscounter.update();
 }
 
 

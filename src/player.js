@@ -12,7 +12,7 @@ class Player extends Character {
         this.barCluster.addBar("HP", "hp", "maxHp", 80, 12,
             "red", "black");
 
-        this.weapons.push(new Otaku(), new DickGun());
+        this.weapons.push(new Otaku(), new ScrotumLauncher());
     }
 
     takeDamage(damage) {
