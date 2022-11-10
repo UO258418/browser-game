@@ -2,15 +2,24 @@ class Tile extends Model {
 
     static size = 0;
     
-    constructor(sprite, x, y) {
+    constructor(x, y, spriteManager, spriteCol, spriteRow) {
         super(x, y);
-        this.sprite = sprite;
+        this.spriteManager = spriteManager;
+        this.spriteCol = spriteCol;
+        this.spriteRow = spriteRow;
     }
 
     draw(camera, context) {
-        context.drawImage(this.sprite, this.position.x - Tile.size / 2 - camera.offset.x,
-             this.position.y - Tile.size / 2 - camera.offset.y,
-              Tile.size, Tile.size);
+        this.spriteManager.drawSprite(
+            this.spriteCol,
+            this.spriteRow,
+            this.position.x,
+            this.position.y,
+            Tile.size,
+            Tile.size,
+            camera,
+            context
+        );
     }
 
     static setSize(size) {

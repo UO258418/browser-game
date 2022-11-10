@@ -8,7 +8,8 @@ const filenames = [
     "scrotum.png",
     "blood.png",
     "skeleton.png",
-    "goblin.png"
+    "goblin.png",
+    "tilesetgrass.png"
 ]
 
 var sprites = {}

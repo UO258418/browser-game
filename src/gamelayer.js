@@ -6,11 +6,17 @@ class GameLayer extends Layer {
     }
 
     init() {
+        // Get the contexts
+        this.contextWorld = ContextManager.getCanvasContext('wcanvas');
+        this.contextGame = ContextManager.getCanvasContext('gcanvas');
+        this.contextUI = ContextManager.getCanvasContext('uicanvas');
+
         this.world = new World(settings.worldSize, settings.tileSize);
         this.world.generateTiles();
 
         this.player = new Player(this.world.area / 2, this.world.area / 2);
-        this.camera = new Camera(this.player);
+        this.camera = new Camera(this.player, this.contextGame.canvas.width / 2,
+            this.contextGame.canvas.height / 2);
 
         // Ammo existing
         this.ammo = [];
@@ -43,11 +49,6 @@ class GameLayer extends Layer {
         this.input.SU = () => this.player.stop();
         this.input.AU = () => this.player.stop();
 
-        // Get the contexts
-        this.contextWorld = ContextManager.getCanvasContext('wcanvas');
-        this.contextGame = ContextManager.getCanvasContext('gcanvas');
-        this.contextUI = ContextManager.getCanvasContext('uicanvas');
-
         // Initial things to be drawn
         this.world.draw(this.camera, this.contextWorld);
     }
@@ -58,8 +59,8 @@ class GameLayer extends Layer {
 
     update() {
         this.player.update();
-        this.camera.update(this.world);
-        this.enemySpawner.update();
+        this.camera.update(this.world, this.contextGame);
+        this.enemySpawner.update(this.contextGame);
 
         // ammo
         this.ammo.forEach(ammo => {
@@ -100,6 +101,10 @@ class GameLayer extends Layer {
     }
 
     draw() {
+        // world context
+        this.contextWorld.clearRect(0, 0, this.contextWorld.canvas.width, this.contextWorld.canvas.height); // clear
+        this.world.draw(this.camera, this.contextWorld);
+
         // game context
         this.contextGame.clearRect(0, 0, this.contextGame.canvas.width, this.contextGame.canvas.height); // clear
 
@@ -107,6 +112,9 @@ class GameLayer extends Layer {
         this.enemies.forEach(enemy => enemy.render(this.camera, this.contextGame));
         this.ammo.forEach(ammo => ammo.render(this.camera, this.contextGame));
         this.player.draw(this.camera, this.contextGame); // draw player
+
+        // UI context
+        this.contextUI.clearRect(0, 0, this.contextUI.canvas.width, this.contextUI.canvas.height); // clear
     }
 
     removeFromCollection(collection, item) {

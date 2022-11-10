@@ -1,7 +1,7 @@
-const canvas = document.getElementById('gcanvas');
+/*const canvas = document.getElementById('gcanvas');
 const ctx = canvas.getContext('2d');
 ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
+ctx.canvas.height = window.innerHeight;*/
 
 // Register contexts
 ContextManager.registerContext('wcanvas');
@@ -9,8 +9,7 @@ ContextManager.registerContext('gcanvas');
 ContextManager.registerContext('uicanvas');
 
 window.onresize = () => {
-    ctx.canvas.width = window.innerWidth;
-    ctx.canvas.height = window.innerHeight;
+    ContextManager.resizeContexts(window.innerWidth, window.innerHeight);
     fpscounter.setFont(fpscounter.font); // when resizing canvas some ctx settings reset
 }
 
@@ -22,7 +21,7 @@ window.onkeydown = () => {
 }
 
 /* ----------------------------------------------------------- */
-let fpscounter = new FPSCounter();
+let fpscounter = new FPSCounter(ContextManager.getCanvasContext('uicanvas'));
 
 // layers
 let gameLayer;

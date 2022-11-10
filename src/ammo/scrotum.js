@@ -13,8 +13,8 @@ class Scrotum extends Ammo {
         this.position = this.position.add(this.speedVector);
     }
 
-    draw(camera) {
-        ctx.drawImage(sprites.scrotum, this.position.x - this.width / 2 - camera.offset.x,
+    draw(camera, context) {
+        context.drawImage(sprites.scrotum, this.position.x - this.width / 2 - camera.offset.x,
             this.position.y - this.height / 2 - camera.offset.y, this.width, this.height);
     }
 

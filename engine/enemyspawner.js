@@ -10,11 +10,11 @@ class EnemySpawner {
         this.lastSpawn = new Date();
     }
 
-    update() {
+    update(context) {
         this.current = new Date();
         let ellapsed = this.current - this.lastSpawn;
         if(ellapsed >= this.cooldown) {
-            this.spawn();
+            this.spawn(context);
             this.lastSpawn = this.current;
         }
     }
@@ -23,24 +23,24 @@ class EnemySpawner {
         this.enemyTypes.push(enemyType);
     }
 
-    getSpawnArea() {
+    getSpawnArea(context) {
         return {
             // Outer border of the spawn area
-            topOuterBorder: this.target.position.y - canvas.height / 2 - this.margin,
-            rightOuterBorder: this.target.position.x + canvas.width / 2 + this.margin,
-            botOuterBorder: this.target.position.y + canvas.height / 2 + this.margin,
-            leftOuterBorder: this.target.position.x - canvas.width / 2 - this.margin,
+            topOuterBorder: this.target.position.y - context.canvas.height / 2 - this.margin,
+            rightOuterBorder: this.target.position.x + context.canvas.width / 2 + this.margin,
+            botOuterBorder: this.target.position.y + context.canvas.height / 2 + this.margin,
+            leftOuterBorder: this.target.position.x - context.canvas.width / 2 - this.margin,
 
             // Inner border of the spawn area
-            topInnerBorder: this.target.position.y - canvas.height / 2 - this.offset,
-            rightInnerBorder: this.target.position.x + canvas.width / 2 + this.offset,
-            botInnerBorder: this.target.position.y + canvas.height / 2 + this.offset,
-            leftInnerBorder: this.target.position.x - canvas.width / 2 - this.offset
+            topInnerBorder: this.target.position.y - context.canvas.height / 2 - this.offset,
+            rightInnerBorder: this.target.position.x + context.canvas.width / 2 + this.offset,
+            botInnerBorder: this.target.position.y + context.canvas.height / 2 + this.offset,
+            leftInnerBorder: this.target.position.x - context.canvas.width / 2 - this.offset
         }
     }
 
-    spawn() {
-        let spawnArea = this.getSpawnArea();
+    spawn(context) {
+        let spawnArea = this.getSpawnArea(context);
 
         let randomX, randomY;
 

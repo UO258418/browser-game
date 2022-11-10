@@ -14,4 +14,11 @@ class ContextManager {
         return this.contexts[canvasName];
     }
 
+    static resizeContexts(width, height) {
+        for(let context in this.contexts) {
+            this.contexts[context].canvas.width = width;
+            this.contexts[context].canvas.height = height;
+        }
+    }
+
 }
