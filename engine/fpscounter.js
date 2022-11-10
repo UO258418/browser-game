@@ -1,6 +1,6 @@
 class FPSCounter {
 
-    constructor(context, font = "30px Arial") {
+    constructor(context, font = "20px Courier New") {
         this.lastFrame = new Date();
         this.lastRefreshed = 0;
         this.current = null;
@@ -8,7 +8,7 @@ class FPSCounter {
         this.fps = 0;
         this.frameTimes = [];
         this.context = context;
-        this.setFont(font);
+        this.font = font;
     }
 
     update() {
@@ -25,13 +25,9 @@ class FPSCounter {
         this.lastFrame = this.current;
     }
 
-    setFont(font = "30px Arial") {
-        this.font = font;
-        this.context.font = this.font;
-    }
-
     draw() {
         this.context.fillStyle = "black";
+        this.context.font = this.font;
         this.context.fillText("FPS: " + Math.round(this.fps), this.context.canvas.width *  0.05,
             this.context.canvas.height * 0.1);
     }

@@ -8,3 +8,7 @@ const settings = {
 const audioSettings = {
     backgroundMusicVolume: 0.03
 }
+
+const uiSettings = {
+    expBarHeight: 0.03
+}

@@ -14,7 +14,10 @@ class GameLayer extends Layer {
         this.world = new World(settings.worldSize, settings.tileSize);
         this.world.generateTiles();
 
+        // Player
         this.player = new Player(this.world.area / 2, this.world.area / 2);
+
+        // Camera
         this.camera = new Camera(this.player, this.contextGame.canvas.width / 2,
             this.contextGame.canvas.height / 2);
 
@@ -32,7 +35,12 @@ class GameLayer extends Layer {
         // Enemy spawner
         this.enemySpawner = new EnemySpawner(this.player, 100, 500);
         this.enemySpawner.registerEnemyType(Skeleton);
-        this.enemySpawner.registerEnemyType(Goblin)
+        this.enemySpawner.registerEnemyType(Goblin);
+
+        // Experience bar
+        this.expBar = new ExpBar(this.contextGame.canvas.width / 2,
+            this.contextGame.canvas.height * uiSettings.expBarHeight / 2, this.contextGame.canvas.width,
+            this.contextGame.canvas.height * uiSettings.expBarHeight, this.player);
 
         /* input */
         this.input = new Input();
@@ -115,6 +123,7 @@ class GameLayer extends Layer {
 
         // UI context
         this.contextUI.clearRect(0, 0, this.contextUI.canvas.width, this.contextUI.canvas.height); // clear
+        this.expBar.draw(this.contextUI);
     }
 
     removeFromCollection(collection, item) {

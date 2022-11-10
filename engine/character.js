@@ -25,6 +25,12 @@ class Character extends Model {
 
         // update weapons
         this.weapons.forEach(weapon => weapon.update(this));
+
+        this.updateAfter();
+    }
+
+    updateAfter() {
+
     }
 
     draw(camera, context) {

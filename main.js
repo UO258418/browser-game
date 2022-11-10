@@ -10,7 +10,6 @@ ContextManager.registerContext('uicanvas');
 
 window.onresize = () => {
     ContextManager.resizeContexts(window.innerWidth, window.innerHeight);
-    fpscounter.setFont(fpscounter.font); // when resizing canvas some ctx settings reset
 }
 
 window.onkeydown = () => {

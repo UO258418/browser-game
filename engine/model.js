@@ -46,9 +46,9 @@ class Model {
         this.collisionAlpha = collisionAlpha;
     }
 
-    drawCollisionBox(camera) {
-        ctx.strokeStyle = "red";
-        ctx.strokeRect(this.position.x - this.width / 2 - camera.offset.x + this.collisionAlpha,
+    drawCollisionBox(camera, context) {
+        context.strokeStyle = "red";
+        context.strokeRect(this.position.x - this.width / 2 - camera.offset.x + this.collisionAlpha,
             this.position.y - this.height / 2 - camera.offset.y + this.collisionAlpha,
             this.width - 2 * this.collisionAlpha, this.height - 2 * this.collisionAlpha);
     }
