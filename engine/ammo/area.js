@@ -1,18 +1,16 @@
 class Area extends Ammo {
 
-    constructor(center, width, height, damage, duration, speed = 0) {
-        super(center.position.x, center.position.y, width, height, damage, speed);
-        this.center = center;
+    constructor(origin, width, height, damage, duration, speed = 0) {
+        super(origin, origin.position.x, origin.position.y, width, height, damage, speed, duration);
         this.color = `rgba(0, 0, 0, 0.6)`;
-        this.duration = duration;
         this.current = null;
         this.created = new Date();
     }
 
     update() {
-        if(this.center != null) {
-            this.position.x = this.center.position.x;
-            this.position.y = this.center.position.y;
+        if(this.origin != null) {
+            this.position.x = this.origin.position.x;
+            this.position.y = this.origin.position.y;
         }
 
         this.current = new Date();
@@ -56,14 +54,14 @@ class Area extends Ammo {
         return false;
     }
 
-    drawCollisionBox(camera, model) {
+    drawCollisionBox(camera, model, context) {
         let margin = (model.width + model.height) / 4 * 0.6;
-        ctx.strokeStyle = "red";
-        ctx.beginPath();
-        ctx.ellipse(this.position.x - camera.offset.x, this.position.y - camera.offset.y,
+        context.strokeStyle = "red";
+        context.beginPath();
+        context.ellipse(this.position.x - camera.offset.x, this.position.y - camera.offset.y,
             this.width + margin, this.height + margin, 0, 0, 2 * Math.PI);
-        ctx.closePath();
-        ctx.stroke();
+        context.closePath();
+        context.stroke();
     }
 
 }

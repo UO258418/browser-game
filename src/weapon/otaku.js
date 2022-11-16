@@ -1,12 +1,16 @@
 class Otaku extends Weapon {
 
-    constructor() {
-        super(5, 10000, BadSmell);
+    constructor(owner) {
+        super(owner, 5, 10000, BadSmell);
+        this.setLevelFunction(1, this.level1);
+        this.setLevel(1);
     }
 
-    attack(owner) {
-        let ammo1 = new this.ammo(owner);
-        gameLayer.ammo.push(ammo1);
+    level1() {
+        this.attack = (owner) => {
+            let ammo1 = new this.ammo(owner);
+            gameLayer.ammo.push(ammo1);
+        }
     }
 
 }

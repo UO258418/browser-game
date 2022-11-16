@@ -12,3 +12,7 @@ const audioSettings = {
 const uiSettings = {
     expBarHeight: 0.03
 }
+
+const playerSettings = {
+    expIncreasePerLevel: 1.1
+}

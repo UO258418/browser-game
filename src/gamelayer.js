@@ -14,6 +14,17 @@ class GameLayer extends Layer {
         this.world = new World(settings.worldSize, settings.tileSize);
         this.world.generateTiles();
 
+        this.collider = new Collider(); // Collider
+
+        // Ammo existing
+        this.ammo = [];
+
+        // Enemies existing
+        this.enemies = [];
+
+        // Drops existing
+        this.drops = [];
+
         // Player
         this.player = new Player(this.world.area / 2, this.world.area / 2);
 
@@ -21,16 +32,6 @@ class GameLayer extends Layer {
         this.camera = new Camera(this.player, this.contextGame.canvas.width / 2,
             this.contextGame.canvas.height / 2);
 
-        // Ammo existing
-        this.ammo = [];
-
-        this.collider = new Collider();
-
-        // Enemies array
-        this.enemies = [];
-
-        // Drops
-        this.drops = [];
 
         // Enemy spawner
         this.enemySpawner = new EnemySpawner(this.player, 100, 500);
