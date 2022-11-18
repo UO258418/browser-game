@@ -25,6 +25,10 @@ class Vector {
         return new Vector(this.x + vector.x, this.y + vector.y, this.z + vector.z);
     }
 
+    substract(vector) {
+        return new Vector(this.x - vector.x, this.y - vector.y, this.z - vector.z);
+    }
+
     dotProduct(scalar) {
         return new Vector(this.x * scalar, this.y * scalar, this.z * scalar);
     }

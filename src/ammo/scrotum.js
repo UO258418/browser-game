@@ -22,15 +22,15 @@ class Scrotum extends Ammo {
 
     level2() {
         this.updateAfter = () => {
+            let originDisplacement = this.origin.position.substract(this.lastOriginPosition);
+            this.position = this.position.add(originDisplacement);
+            this.lastOriginPosition = this.origin.position;
+
             let newCoords = rotateAround(this.origin.position.x, this.origin.position.y,
                 this.position.x, this.position.y, 5);
 
             this.position.x = newCoords[0];
             this.position.y = newCoords[1];
-
-            let vectorToTarget = this.origin.getVectorToTarget(this);
-            vectorToTarget = vectorToTarget.normalize().dotProduct(this.distance);
-            this.position = this.origin.position.add(vectorToTarget);
         }
     }
 

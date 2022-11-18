@@ -1,8 +1,3 @@
-/*const canvas = document.getElementById('gcanvas');
-const ctx = canvas.getContext('2d');
-ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;*/
-
 // Register contexts
 ContextManager.registerContext('wcanvas');
 ContextManager.registerContext('gcanvas');
@@ -17,6 +12,15 @@ window.onkeydown = () => {
     audios.battleship.volume = audioSettings.backgroundMusicVolume;
     audios.battleship.play();
     window.onkeydown = null;
+}
+
+// Mouse coordinates
+let mouseX = 0;
+let mouseY = 0;
+
+window.onmousemove = (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
 }
 
 /* ----------------------------------------------------------- */

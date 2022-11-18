@@ -60,6 +60,10 @@ class GameLayer extends Layer {
 
         // Initial things to be drawn
         this.world.draw(this.camera, this.contextWorld);
+
+        // save methods while on pause
+        this.updateFunction = null;
+        this.drawFunction = null;
     }
 
     processInput() {
@@ -130,6 +134,65 @@ class GameLayer extends Layer {
     removeFromCollection(collection, item) {
         let index = this[collection].indexOf(item);
         this[collection].splice(index, 1);
+    }
+
+    pause(pauseFunctions = {}) {
+        if(this.updateFunction == null)
+            this.updateFunction = this.update;
+
+        if(this.drawFunction == null)
+            this.drawFunction = this.draw;
+
+        this.update = pauseFunctions.update || function () {};
+        this.draw = pauseFunctions.draw || function () {};
+    }
+
+    resume(beforeResume) {
+        if(beforeResume)
+            beforeResume();
+
+        this.update = this.updateFunction;
+        this.draw = this.drawFunction;
+    }
+
+    playerLevelUp() {
+        let canvasWidth = this.contextUI.canvas.width;
+        let canvasHeight = this.contextUI.canvas.height;
+        let options = [
+            new UpgradeOption("Option 1"),
+            new UpgradeOption("Option 2"),
+            new UpgradeOption("Option 3"),
+            new UpgradeOption("Option 4")
+        ];
+        let menu = new MenuBox(canvasWidth / 2, canvasHeight / 2,
+            canvasWidth * 0.3, canvasHeight * 0.6, options);
+        menu.setBackgroundColor("rgb(102, 102, 255)");
+        menu.setOptionColor("rgb(153, 153, 159)");
+
+        let pauseFunctions = {
+            update: () => {
+                menu.update(this.contextUI);
+            },
+            draw: () => {
+                this.contextUI.clearRect(0, 0, this.contextUI.canvas.width, this.contextUI.canvas.height);
+                menu.draw(this.contextUI);
+            }
+        }
+
+        this.contextUI.canvas.style.cursor = 'url(https://ani.cursors-4u.net/cursors/cur-13/cur1163.ani), ' +
+            'url(https://ani.cursors-4u.net/cursors/cur-13/cur1163.png), auto';
+        this.pause(pauseFunctions);
+        window.onmousedown = () => {
+            options.forEach(option => {
+                if(option.mouseOver()) {
+                    console.log(option.description);
+                    this.resume(() => {
+                       window.onmousedown = null;
+                       this.contextUI.canvas.style.cursor = 'none';
+                    });
+                }
+            });
+        }
     }
 
 }

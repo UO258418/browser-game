@@ -38,6 +38,7 @@ class Player extends Character {
             this.level += 1;
             this.exp = Math.abs(remainingExp);
             this.maxExp = Math.round(this.maxExp * playerSettings.expIncreasePerLevel);
+            gameLayer.playerLevelUp();
         }
     }
 

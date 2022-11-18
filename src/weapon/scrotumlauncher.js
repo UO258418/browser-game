@@ -81,6 +81,7 @@ class ScrotumLauncher extends Weapon {
 
         ammoList.forEach(ammo => {
             ammo.distance = distance;
+            ammo.lastOriginPosition = ammo.origin.position;
             ammo.setLevel(2);
             gameLayer.ammo.push(ammo);
         });
