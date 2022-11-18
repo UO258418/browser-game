@@ -18,3 +18,12 @@ function rotateAround(cx, cy, x, y, angle) {
     return [nx, ny];
 }
 
+function generateRandomUniqueNumbers(amount, min, max) {
+    let result = [];
+    while(result.length < amount){
+        let rndNumber = Math.floor(getRandomArbitrary(min, max));
+        if(result.indexOf(rndNumber) == -1) result.push(rndNumber);
+    }
+    return result;
+}
+
