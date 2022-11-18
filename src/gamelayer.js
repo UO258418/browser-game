@@ -162,12 +162,12 @@ class GameLayer extends Layer {
             new UpgradeOption("Option 1"),
             new UpgradeOption("Option 2"),
             new UpgradeOption("Option 3"),
-            new UpgradeOption("Option 4")
         ];
-        let menu = new MenuBox(canvasWidth / 2, canvasHeight / 2,
+        let menu = new LevelUpMenu(canvasWidth / 2, canvasHeight / 2,
             canvasWidth * 0.3, canvasHeight * 0.6, options);
         menu.setBackgroundColor("rgb(102, 102, 255)");
         menu.setOptionColor("rgb(153, 153, 159)");
+        menu.setBorder({color: "#cccc00", width: 2});
 
         let pauseFunctions = {
             update: () => {
